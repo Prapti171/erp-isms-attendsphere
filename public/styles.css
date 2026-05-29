@@ -172,11 +172,11 @@ button.secondary {
 }
 
 .alumni-card img {
-  width: 90px;
-  height: 90px;
+  width: 110px;
+  height: 110px;
   border-radius: 999px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 15%;
   display: block;
   margin: 0 auto 8px auto;
   border: 3px solid #6366f1;
