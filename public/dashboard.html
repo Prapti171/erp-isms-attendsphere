@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AttendSphere ERP Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./marksheet.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <h2>ERP ISMS</h2>
+        <p class="muted">Integrated Student Management</p>
+        <nav id="menu">
+          <button data-page="dashboard" class="active">Dashboard</button>
+          <button data-page="admissions">Admissions</button>
+          <button data-page="students">Students</button>
+          <button data-page="academics">Academics</button>
+          <button data-page="examinations">Examinations</button>
+          <button data-page="library">Library</button>
+          <button data-page="hostel">Hostel & Transport</button>
+          <button data-page="finance">Finance</button>
+          <button data-page="hr">HR & Payroll</button>
+          <button data-page="alumni">Alumni & Placement</button>
+        </nav>
+        <div class="quick-actions">
+          <button id="quickNewStudentBtn">+ New Student</button>
+          <button class="secondary">Import CSV</button>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <input id="globalSearch" placeholder="Search students, courses, IDs..." />
+          <button class="secondary" id="refreshBtn">Refresh</button>
+          <div class="profile">
+            <strong id="userName">User</strong>
+            <span id="userRole">Role</span>
+            <button id="logoutBtn">Logout</button>
+          </div>
+        </header>
+
+        <section id="reminderBox" class="card warning"></section>
+
+        <section id="dashboard" class="page active">
+          <div class="stats-row" id="summaryStats"></div>
+          <div class="card">
+            <h3>Students Directory</h3>
+            <p class="muted">Name, enrollment, course, phone, branch</p>
+            <table id="studentTable"></table>
+            <div class="pager">
+              <button class="secondary" id="prevPageBtn">Prev</button>
+              <span id="pageInfo"></span>
+              <button class="secondary" id="nextPageBtn">Next</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="admissions" class="page card">
+          <h3>New Admission Form</h3>
+          <div class="grid-2">
+            <input id="admName" placeholder="Full Name" />
+            <input id="admEnrollment" placeholder="Enrollment Number" />
+            <input id="admBranch" placeholder="Branch (CSE/IT...)" />
+            <input id="admCourse" placeholder="Course (B.Tech/M.Tech...)" />
+            <input id="admPhone" placeholder="Phone Number" />
+            <button id="admissionSubmitBtn">Submit Admission</button>
+          </div>
+          <p id="admissionMsg" class="status-text"></p>
+        </section>
+
+        <section id="students" class="page card">
+          <h3>Student Attendance Report</h3>
+          <input id="studentEnrollmentInput" placeholder="Enrollment e.g. IT1001, EC1012" />
+          <button id="loadStudentAttendanceBtn">Load Attendance</button>
+          <div id="studentAttendanceBox"></div>
+        </section>
+
+        <section id="academics" class="page card">
+          <h3>Academics — Attendance Dashboard</h3>
+          <p class="muted">Month-wise and date-wise lecture attendance with percentage</p>
+          <div id="attendanceList"></div>
+        </section>
+        <section id="examinations" class="page card">
+          <h3>View Student Result</h3>
+          <div class="grid-2">
+            <input id="examEnrollment" placeholder="Enrollment Number (e.g. IT1001)" />
+            <input id="examBranch" placeholder="Branch (CSE / IT / ECE)" />
+            <select id="examSemester">
+              <option value="I">Semester I</option>
+              <option value="II" selected>Semester II</option>
+              <option value="III">Semester III</option>
+              <option value="IV">Semester IV</option>
+            </select>
+            <button id="examResultBtn">Show Marksheet</button>
+          </div>
+          <div id="examResultBox"></div>
+        </section>
+
+        <section id="library" class="page card">
+          <h3>Library Portal</h3>
+          <input id="libraryQuery" placeholder="Search by book title or author" />
+          <button id="librarySearchBtn">Search Book</button>
+          <div id="libraryResultBox"></div>
+        </section>
+
+        <section id="hostel" class="page card">
+          <h3>Hostel & Transport Info</h3>
+          <button id="hostelLoadBtn">Check Nearby Hostels (using live location)</button>
+          <div id="hostelResultBox"></div>
+        </section>
+
+        <section id="finance" class="page card">
+          <h3>Finance Portal</h3>
+          <input id="financeEnrollment" placeholder="Enrollment Number (or leave for current user)" />
+          <button id="financeLoadBtn">Load Finance</button>
+          <div id="financeResultBox"></div>
+        </section>
+
+        <section id="hr" class="page card">
+          <h3>HR, Payroll & Placements</h3>
+          <input id="jobRoleQuery" placeholder="Search role e.g. Software Developer" />
+          <button id="jobSearchBtn">Search Jobs</button>
+          <div id="jobsResultBox"></div>
+        </section>
+
+        <section id="alumni" class="page card">
+          <h3>Alumni & Placement Portal</h3>
+          <div id="alumniGrid" class="alumni-grid"></div>
+        </section>
+
+        <div id="chatbot" class="chatbot">
+          <button id="botToggle">🤖 Nova</button>
+          <div id="botPanel" class="hidden">
+            <h4>Nova - AI Assistant</h4>
+            <div id="botMessages" class="bot-messages"></div>
+            <input id="botInput" placeholder="Ask anything..." />
+            <button id="botSend">Send</button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./api-config.js"></script>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

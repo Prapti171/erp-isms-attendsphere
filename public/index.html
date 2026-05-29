@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AttendSphere ERP Login</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="login-body">
+    <main class="login-card">
+      <h1>AttendSphere ERP Login</h1>
+      <p class="muted">Attendance-first Integrated Student Management System</p>
+
+      <div class="mode-switch">
+        <button id="loginModeBtn" class="active">Login</button>
+        <button id="signupModeBtn">Manual Signup</button>
+        <button id="googleModeBtn">Google Login</button>
+      </div>
+
+      <section id="loginMode">
+        <label>Name / Enrollment No.</label>
+        <input id="identifier" placeholder="e.g. MT001" />
+        <label>Password</label>
+        <input id="password" type="password" placeholder="Enter password" />
+        <button id="passwordLoginBtn">Login</button>
+      </section>
+
+      <section id="signupMode" class="hidden">
+        <label>Full Name</label>
+        <input id="signupName" placeholder="e.g. Prapti Roy" />
+        <label>Enrollment</label>
+        <input id="signupEnrollment" placeholder="e.g. MT999" />
+        <label>Role</label>
+        <select id="signupRole">
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+          <option value="admin">Admin</option>
+        </select>
+        <label>Password</label>
+        <input id="signupPassword" type="password" placeholder="Set password" />
+        <button id="signupBtn">Create Account</button>
+      </section>
+
+      <section id="googleMode" class="hidden">
+        <label>Gmail</label>
+        <input id="gmailInput" type="email" placeholder="yourname@gmail.com" />
+        <label>Role</label>
+        <select id="googleRole">
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button id="googleLoginBtn">Continue with Google</button>
+      </section>
+
+      <p id="loginMsg" class="status-text"></p>
+      <p class="hint">
+        Demo: <b>ADMIN1</b>, <b>FAC1001</b>, students <b>IT1001</b>, <b>EC1001</b>, <b>CSE1001</b><br />
+        Password: <b>Pass@123</b>
+      </p>
+    </main>
+
+    <script src="./api-config.js"></script>
+    <script src="./login.js"></script>
+  </body>
+</html>
