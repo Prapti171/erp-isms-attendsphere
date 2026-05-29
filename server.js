@@ -9,15 +9,17 @@ const { execSync } = require("child_process");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || "attendsphere-super-secret-key";
-const DATA_FILE = path.join(__dirname, "data", "store.json");
+// On Vercel, api/index.js is the entry; __dirname = /var/task/api, data/ is at /var/task/data
+const ROOT_DIR = path.join(__dirname, fs.existsSync(path.join(__dirname, "data")) ? "" : "..");
+const DATA_FILE = path.join(ROOT_DIR, "data", "store.json");
 
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(ROOT_DIR, "public")));
 
 const ensureStore = () => {
   if (!fs.existsSync(DATA_FILE)) {
-    execSync("node scripts/generate-store.js", { cwd: __dirname, stdio: "inherit" });
+    execSync("node scripts/generate-store.js", { cwd: ROOT_DIR, stdio: "inherit" });
   }
 };
 ensureStore();
